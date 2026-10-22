@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>松本・緑町と上土通りの歴史と変遷</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Shippori Mincho & Noto Sans JP) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        retro: {
+                            bg: '#fbf9f4',
+                            paper: '#f3efe6',
+                            card: '#ffffff',
+                            primary: '#2d5a27', // Midori (Green)
+                            secondary: '#8c2d19', // Vintage Red
+                            accent: '#c9933b', // Warm Gold
+                            dark: '#2b2623',
+                            muted: '#6b625b',
+                            border: '#e2dacf'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Shippori Mincho"', 'Georgia', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fbf9f4;
+            color: #2b2623;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-image: radial-gradient(#e2dacf 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+        .vintage-border {
+            border: 1px solid #d4c8b8;
+            box-shadow: 0 4px 20px -2px rgba(43, 38, 35, 0.08);
+        }
+        .text-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1ebd9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d5a27;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1e3d1a;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- Header / Hero Section -->
+    <header class="relative bg-retro-dark text-retro-paper overflow-hidden border-b-4 border-retro-accent">
+        <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('1.jpg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-retro-dark via-retro-dark/90 to-transparent"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16 relative z-10">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-retro-primary text-white text-xs tracking-widest rounded-full uppercase mb-3 font-semibold">信州松本 城下町の記憶</span>
+                    <h1 class="text-3xl sm:text-5xl font-bold font-serif tracking-tight text-white mb-3">
+                        緑町・上土通り
+                    </h1>
+                    <p class="text-lg text-retro-paper/80 font-serif max-w-xl leading-relaxed">
+                        城下町の外堀から始まり、大正ロマン・昭和の繁華街へと変遷した街の歴史と人々の物語
+                    </p>
+                </div>
+                <div class="hidden lg:flex items-center gap-4 bg-black/40 p-4 rounded-xl backdrop-blur-sm border border-retro-accent/30 text-retro-accent font-serif text-sm">
+                    <div class="text-vertical h-24 tracking-widest text-lg font-bold border-l border-retro-accent/40 pl-3">大正ロマンの街</div>
+                    <div class="text-vertical h-24 tracking-widest text-lg font-bold">下町風情残る小路</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-30 bg-retro-paper/95 backdrop-blur border-b border-retro-border shadow-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-between h-14 overflow-x-auto no-scrollbar">
+                <div class="flex space-x-1 sm:space-x-4 min-w-max">
+                    <button onclick="scrollToSection('origin')" class="nav-btn px-3 py-2 text-sm font-medium rounded-lg text-retro-dark hover:bg-retro-primary hover:text-white transition-colors">
+                        <i class="fa-solid fa-seedling mr-1.5 text-retro-primary"></i>町名の由来
+                    </button>
+                    <button onclick="scrollToSection('geography')" class="nav-btn px-3 py-2 text-sm font-medium rounded-lg text-retro-dark hover:bg-retro-primary hover:text-white transition-colors">
+                        <i class="fa-solid fa-water mr-1.5 text-retro-primary"></i>地形と水の流れ
+                    </button>
+                    <button onclick="scrollToSection('tatsumi')" class="nav-btn px-3 py-2 text-sm font-medium rounded-lg text-retro-dark hover:bg-retro-primary hover:text-white transition-colors">
+                        <i class="fa-solid fa-building-shield mr-1.5 text-retro-primary"></i>辰巳町と疎開
+                    </button>
+                    <button onclick="scrollToSection('evolution')" class="nav-btn px-3 py-2 text-sm font-medium rounded-lg text-retro-dark hover:bg-retro-primary hover:text-white transition-colors">
+                        <i class="fa-solid fa-clock-rotate-left mr-1.5 text-retro-primary"></i>その後の変遷
+                    </button>
+                    <button onclick="scrollToSection('gallery')" class="nav-btn px-3 py-2 text-sm font-medium rounded-lg text-retro-dark hover:bg-retro-primary hover:text-white transition-colors">
+                        <i class="fa-solid fa-images mr-1.5 text-retro-primary"></i>貴重写真ギャラリー
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12 flex-grow space-y-16">
+
+        <!-- Intro Highlight Banner -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 vintage-border relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-retro-primary/10 rounded-bl-full pointer-events-none"></div>
+            <div class="grid md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-4">
+                    <span class="text-xs font-bold tracking-widest text-retro-secondary uppercase">街の魅力</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-retro-dark">
+                        緑町は飲食街として栄えた通り。<br>
+                        上土は、大正時代の建物が数多く残る<br class="hidden sm:inline">「大正ロマンの街」。
+                    </h2>
+                    <p class="text-retro-muted leading-relaxed">
+                        下町風情の残る個性的な通りであり、松本城の外堀の記憶や戦前・戦後の人々の暮らしを今に伝える貴重な歴史を秘めています。
+                    </p>
+                </div>
+                <div class="md:col-span-5">
+                    <div class="relative group cursor-pointer overflow-hidden rounded-xl shadow-md border-2 border-retro-border" onclick="openModal('1.jpg', '緑町・上土通り（現代）', '飲食街として栄えた通りと大正ロマンの風情が残る上土通り。')">
+                        <img src="1.jpg" alt="緑町・上土通り" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/2d5a27/ffffff?text=緑町・上土通り'">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-medium">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-2"></i>拡大表示
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-2 bg-retro-dark/80 text-white text-xs text-center font-serif">
+                            写真：緑町・上土通りの街並み
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Town Origin -->
+        <section id="origin" class="scroll-mt-20">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-retro-primary text-white flex items-center justify-center font-serif text-lg font-bold">一</div>
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-retro-dark">町名の由来</h2>
+                    <p class="text-xs text-retro-muted">城下町から明治、そして地籍へ</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl vintage-border flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-retro-secondary font-bold mb-3">
+                            <i class="fa-solid fa-droplet"></i>
+                            <h3>「泥町」から「緑町」へ</h3>
+                        </div>
+                        <p class="text-retro-dark leading-relaxed text-sm sm:text-base mb-4">
+                            緑町は城下町の時代、大半が<b>外堀</b>であり、明治時代に埋め立てられた土地です。<br>
+                            もともとは水気が非常に多く<b>「泥町」</b>と呼ばれていた時期もありました。隣接する柳町の柳が生え出て緑っぽくなったことから、いつしか<b>「緑町」</b>と呼ばれるようになったと伝えられています。
+                        </p>
+                    </div>
+                    <div class="bg-retro-paper p-3 rounded-lg border border-retro-border text-xs text-retro-muted italic">
+                        <i class="fa-solid fa-quote-left mr-1 text-retro-accent"></i> 水気と柳の緑が生み出した、街の情緒ある名前のルーツ。
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl vintage-border flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-retro-secondary font-bold mb-3">
+                            <i class="fa-solid fa-mountain-city"></i>
+                            <h3>「上土」と戸籍の歴史</h3>
+                        </div>
+                        <p class="text-retro-dark leading-relaxed text-sm sm:text-base mb-4">
+                            堀の土を掘り上げて造られた地籍が<b>「上土（あげっち）」</b>です。<br>
+                            終戦前は、一部の戸籍の本籍地が「上土裏○番地」と記載されており、当時は「緑町」という表記は公式な戸籍としては使用されていませんでした。
+                        </p>
+                    </div>
+                    <div class="bg-retro-paper p-3 rounded-lg border border-retro-border text-xs text-retro-muted">
+                        <span class="font-bold text-retro-dark">豆知識：</span> お堀を掘った際の土を積み上げた歴史が「上土」という名に今も生きています。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Geography & Water Flow -->
+        <section id="geography" class="scroll-mt-20">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-retro-primary text-white flex items-center justify-center font-serif text-lg font-bold">二</div>
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-retro-dark">地形と水の流れ</h2>
+                    <p class="text-xs text-retro-muted">外堀の起伏と縦横に走る用水の痕跡</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl vintage-border overflow-hidden">
+                <div class="p-6 border-b border-retro-border bg-retro-paper/50">
+                    <h3 class="font-serif font-bold text-lg text-retro-dark mb-2">高低差が物語る城下町の外堀跡</h3>
+                    <p class="text-sm text-retro-muted">
+                        小松パン店前の道は外堀の石垣側で高く、戦後頃までは大人の力でも自転車で上れないほどの急坂でした。東寿司前の道も上土へ登りにくい地形となっています。
+                    </p>
+                </div>
+
+                <div class="p-6 grid md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="space-y-2 border-l-2 border-retro-accent pl-4">
+                        <h4 class="font-bold text-sm text-retro-secondary">低地と水害の記憶</h4>
+                        <p class="text-xs text-retro-dark leading-relaxed">
+                            ホテル花月からマルミ化粧品あたりは旧外堀跡のため土地が低く、かつては水害に遭いやすい場所でした。今も「こばやしそば」以東の家々は、<b>二階が上土の道路と同じくらいの高さ</b>という独特の構造を保っています。
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="space-y-2 border-l-2 border-retro-accent pl-4">
+                        <h4 class="font-bold text-sm text-retro-secondary">堀の名残の小川ルート</h4>
+                        <p class="text-xs text-retro-dark leading-relaxed">
+                            片端 → ホテル花月裏 → 東寿司東 → ナワテ横丁 → 緑町 → 弁天そば・四柱神社を経て女鳥羽川へ。<br>
+                            東寿司・マサムラ横には<b>石橋の跡</b>、弁天そば・こまつ喫茶付近には<b>「みどり橋」の跡</b>が残ります。
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="space-y-2 border-l-2 border-retro-accent pl-4">
+                        <h4 class="font-bold text-sm text-retro-secondary">鶴林堂南の水門と地下水道</h4>
+                        <p class="text-xs text-retro-dark leading-relaxed">
+                            開智小学校の頃は、鶴林堂南に水門がありました。田植えの時期に水門を開けると、地下水道を通って今町裏あたりの田んぼへと水が運ばれる仕組みになっていました。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Tatsumi-cho & Wartime Evacuation -->
+        <section id="tatsumi" class="scroll-mt-20">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-retro-primary text-white flex items-center justify-center font-serif text-lg font-bold">三</div>
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-retro-dark">辰巳町と戦時中の疎開</h2>
+                    <p class="text-xs text-retro-muted">戦争の影と失われた街並み</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl vintage-border p-6 sm:p-8">
+                <div class="grid md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-8 space-y-4">
+                        <div class="inline-block px-3 py-1 bg-retro-secondary/10 text-retro-secondary text-xs font-bold rounded-md">
+                            戦時下の強制疎開
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-retro-dark">
+                            電話局を守るための建物取り壊し
+                        </h3>
+                        <p class="text-sm sm:text-base text-retro-dark leading-relaxed">
+                            辰巳町は現在の電電公社（現NTT）東側の道の両側にあった商家の地域でした。<br>
+                            終戦直前、軍の命令による<b>強制疎開</b>が実施されます。これは重要な通信拠点であった電話局を空襲による火災から守るための防火帯を作るためであり、電電側の家々や大名町表通りの商店・医院などがすべて取り壊されました。
+                        </p>
+                        <p class="text-xs text-retro-muted bg-retro-paper p-3 rounded-lg border border-retro-border">
+                            <i class="fa-solid fa-circle-info mr-1 text-retro-accent"></i>
+                            かつて四柱神社内にあった公会堂や「ノセの時計店」も、もともとは緑町内に位置していました。
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-4 bg-retro-paper p-4 rounded-xl border border-retro-border text-center">
+                        <div class="w-12 h-12 rounded-full bg-retro-secondary/20 text-retro-secondary mx-auto flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-person-shelter text-xl"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-retro-dark text-sm mb-1">辰巳町（たつみちょう）</h4>
+                        <p class="text-xs text-retro-muted leading-relaxed">
+                            商家が立ち並び活気に満ちていた地域は、戦時の国策によって大きな変貌を余儀なくされました。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: History & Evolution -->
+        <section id="evolution" class="scroll-mt-20">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-retro-primary text-white flex items-center justify-center font-serif text-lg font-bold">四</div>
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-retro-dark">その後の変変と現代</h2>
+                    <p class="text-xs text-retro-muted">昭和の大火、ネオンタワー、そして「せせらぎ公園」へ</p>
+                </div>
+            </div>
+
+            <!-- Timeline style layout -->
+            <div class="relative border-l-2 border-retro-primary/30 ml-4 pl-6 space-y-8">
+
+                <!-- Timeline Item 1 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-retro-primary border-4 border-white"></div>
+                    <div class="bg-white p-5 rounded-xl vintage-border">
+                        <span class="text-xs font-bold text-retro-accent font-serif">昭和中頃</span>
+                        <h3 class="font-serif font-bold text-lg text-retro-dark mb-2">料亭「鯛万」の大火と都市計画</h3>
+                        <p class="text-sm text-retro-dark leading-relaxed">
+                            昭和中頃、格式ある料亭「鯛万」が大火により全焼。その跡地の一部が都市計画によって道路拡幅および緑地公園化されました。<br>
+                            「辰巳の庭公園」という名称は、かつての<b>巳御殿（みごてん）の跡</b>や<b>辰巳町</b>の名に由来しています。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-retro-primary border-4 border-white"></div>
+                    <div class="bg-white p-5 rounded-xl vintage-border">
+                        <span class="text-xs font-bold text-retro-accent font-serif">昭和40年代〜平成初期</span>
+                        <h3 class="font-serif font-bold text-lg text-retro-dark mb-2">名物「松本城型巨大ネオンタワー」の時代</h3>
+                        <p class="text-sm text-retro-dark leading-relaxed mb-3">
+                            夜の緑町を彩った松本城を模した巨大なネオンタワーは、街のシンボルとして人々に親しまれました。しかし老朽化に伴い撤去されることとなりました。
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-4 mt-2">
+                            <div class="cursor-pointer group overflow-hidden rounded-lg border border-retro-border" onclick="openModal('S__46088200.jpg', '昭和41年のネオンタワー', '昭和41年当時、緑町の夜を美しく照らしていた松本城型の巨大ネオンタワー。')">
+                                <img src="S__46088200.jpg" alt="昭和41年のネオンタワー" class="w-full h-32 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x250/2b2623/ffffff?text=昭和41年+ネオンタワー'">
+                                <div class="p-2 bg-retro-paper text-xs text-center font-serif text-retro-dark">昭和41年：輝くネオンタワー</div>
+                            </div>
+                            <div class="cursor-pointer group overflow-hidden rounded-lg border border-retro-border" onclick="openModal('S__46088199.jpg', '平成4年頃の街並み', 'アーチ看板や街頭が見える平成4年頃の緑町・上土周辺。')">
+                                <img src="S__46088199.jpg" alt="平成4年頃の街並み" class="w-full h-32 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x250/2b2623/ffffff?text=平成4年頃の街並み'">
+                                <div class="p-2 bg-retro-paper text-xs text-center font-serif text-retro-dark">平成4年頃：アーチが残る街並み</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-retro-primary border-4 border-white"></div>
+                    <div class="bg-white p-5 rounded-xl vintage-border">
+                        <span class="text-xs font-bold text-retro-accent font-serif">平成〜現代</span>
+                        <h3 class="font-serif font-bold text-lg text-retro-dark mb-2">再開発と「せせらぎ公園」、マンション化</h3>
+                        <p class="text-sm text-retro-dark leading-relaxed">
+                            平成に入り公園は再開発され、井戸を掘削した水景あふれる<b>「せせらぎ公園」</b>へと一変しました。<br>
+                            また、ナワテ通りにあった映画館「中劇」は平成16年に惜しまれつつ閉館。現在はマンション等の建設が進み、歴史を受け継ぎながら新しい街の姿へと移り変わっています。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 5: Photo Gallery -->
+        <section id="gallery" class="scroll-mt-20">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-retro-primary text-white flex items-center justify-center font-serif text-lg font-bold"><i class="fa-solid fa-camera"></i></div>
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-retro-dark">歴史写真ギャラリー</h2>
+                    <p class="text-xs text-retro-muted">クリックすると拡大して詳細をご覧いただけます</p>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Image Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden vintage-border group cursor-pointer flex flex-col justify-between" onclick="openModal('1.jpg', '緑町・上土通り（現代）', '緑町は飲食街として栄えた通り。上土は、大正時代の建物が数多く残る「大正ロマンの街」。下町風情の残る個性的な通りです。')">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="1.jpg" alt="緑町・上土通り" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/2d5a27/ffffff?text=緑町・上土通り'">
+                        <span class="absolute top-2 left-2 bg-retro-dark/80 text-white text-[10px] px-2 py-0.5 rounded font-serif">現代</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-serif font-bold text-sm text-retro-dark mb-1">緑町・上土通り</h4>
+                        <p class="text-xs text-retro-muted line-clamp-2">大正時代の建物が多く残る「大正ロマンの街」</p>
+                    </div>
+                </div>
+
+                <!-- Image Card 2 -->
+                <div class="bg-white rounded-xl overflow-hidden vintage-border group cursor-pointer flex flex-col justify-between" onclick="openModal('S__46088198.jpg', '懐かしき緑町の旧き良き隣人の人々', '昭和25年11月25日撮影。「祝 舗装街燈完成」のアーチのもとに集まった地域の人々。商店街の歴史的瞬間。')">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="S__46088198.jpg" alt="懐かしき緑町の旧き良き隣人の人々" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/2b2623/ffffff?text=昭和25年+緑京極'">
+                        <span class="absolute top-2 left-2 bg-retro-secondary/80 text-white text-[10px] px-2 py-0.5 rounded font-serif">昭和25年</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-serif font-bold text-sm text-retro-dark mb-1">舗装街燈完成の記念撮影</h4>
+                        <p class="text-xs text-retro-muted line-clamp-2">「緑京極」アーチ下で祝う住民と商店主の笑顔</p>
+                    </div>
+                </div>
+
+                <!-- Image Card 3 -->
+                <div class="bg-white rounded-xl overflow-hidden vintage-border group cursor-pointer flex flex-col justify-between" onclick="openModal('S__46088200.jpg', '昭和41年のネオンタワー', '松本城の天守閣をモチーフにした巨大な電飾看板（ネオンタワー）。緑町の夜のシンボルでした。')">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="S__46088200.jpg" alt="昭和41年 ネオンタワー" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/2b2623/ffffff?text=昭和41年+ネオンタワー'">
+                        <span class="absolute top-2 left-2 bg-retro-secondary/80 text-white text-[10px] px-2 py-0.5 rounded font-serif">昭和41年</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-serif font-bold text-sm text-retro-dark mb-1">松本城型ネオンタワー</h4>
+                        <p class="text-xs text-retro-muted line-clamp-2">夜の飲食街を華やかに彩った名物タワー</p>
+                    </div>
+                </div>
+
+                <!-- Image Card 4 -->
+                <div class="bg-white rounded-xl overflow-hidden vintage-border group cursor-pointer flex flex-col justify-between" onclick="openModal('S__46088199.jpg', '平成4年頃の緑町周辺', '『今日もあしたも』などの看板やアーチが残り、平成初期の情緒ある街並みが描かれています。')">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="S__46088199.jpg" alt="平成4年頃" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x300/2b2623/ffffff?text=平成4年頃'">
+                        <span class="absolute top-2 left-2 bg-retro-accent/90 text-white text-[10px] px-2 py-0.5 rounded font-serif">平成4年頃</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-serif font-bold text-sm text-retro-dark mb-1">平成初期の街並み</h4>
+                        <p class="text-xs text-retro-muted line-clamp-2">時代の変遷とともに移り変わる通り沿いの景観</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-retro-dark text-retro-paper border-t-2 border-retro-accent py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-3">
+            <p class="font-serif text-lg tracking-wide text-retro-accent">松本城下町 記憶のアーカイブ</p>
+            <p class="text-xs text-retro-paper/60 leading-relaxed max-w-xl mx-auto">
+                本ページは松本市緑町・上土通りの歴史的文献および地元の口伝、記録写真を基に作成された資料Webページです。
+            </p>
+            <p class="text-[10px] text-retro-paper/40 pt-4">&copy; 松本・緑町と上土通りの歴史記録</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeModal()">
+        <div class="relative max-w-4xl w-full bg-retro-dark rounded-2xl overflow-hidden border border-retro-accent/30 shadow-2xl" onclick="event.stopPropagation()">
+            <!-- Modal Header -->
+            <div class="p-4 bg-black/40 flex items-center justify-between border-b border-white/10">
+                <h3 id="modalTitle" class="text-lg font-serif font-bold text-white"></h3>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-2 sm:p-6 flex flex-col items-center">
+                <div class="max-h-[60vh] overflow-hidden flex items-center justify-center w-full bg-black/50 rounded-lg">
+                    <img id="modalImage" src="" alt="" class="max-h-[60vh] w-auto object-contain">
+                </div>
+                <p id="modalDescription" class="mt-4 text-sm text-retro-paper/90 font-serif leading-relaxed text-center max-w-2xl px-2"></p>
+            </div>
+            <!-- Modal Footer -->
+            <div class="p-3 bg-black/40 text-center border-t border-white/10">
+                <button onclick="closeModal()" class="px-6 py-1.5 bg-retro-primary hover:bg-retro-primary/80 text-white text-xs font-medium rounded-full transition-colors">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // Smooth scroll function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Image Modal Open
+        function openModal(imageSrc, title, description) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            modalImage.src = imageSrc;
+            modalImage.onerror = function() {
+                this.src = 'https://placehold.co/800x600/2b2623/ffffff?text=' + encodeURIComponent(title);
+            };
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Image Modal Close
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
